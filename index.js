@@ -1,12 +1,24 @@
-//Create a very simple server
+// Create a very simple server
 import express from 'express';
 import routes from './src/routes/crmRoutes'
+import mongoose from 'mongoose';
+// bodyParser allows us to send objects or data through HDT post, 
+// through our DataBase(to get the right data and post it to database or API)
+import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = 3000;
 
+
+// mangoose connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/CRMdb',{ useNewUrlParser: true });
 routes(app);
- 
+
+// bodyparser setup
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json()); 
+
 //get sth when we are calling that specifique URL in our server
 // we use back tick ` like template string  ` ... ${...}`
 app.get('/', (req, res) =>
