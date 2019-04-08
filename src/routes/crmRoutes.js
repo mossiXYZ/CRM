@@ -1,4 +1,4 @@
-import { runInNewContext } from "vm";
+import { addNewContact } from "../controllers/crmController";
 
 // here we create all the routes we need,
 //in order to create a route, we'll create a function call "routes"
@@ -18,9 +18,8 @@ const routes = (app) => {
     }, (req, res, next) =>{
         res.send('GET request successfull !!! ');
     })
-
-    .post((req, res) => 
-    res.send('POST request successfull !!! '));
+// POST endpoint
+    .post(addNewContact);
 
     app.route('/contact/:contactId')
     .put((req, res) => 
