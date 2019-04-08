@@ -1,4 +1,8 @@
-import { addNewContact , getContacts, getContactsWithID} from "../controllers/crmController";
+import  { addNewContact , 
+         getContacts, 
+         getContactsWithID, 
+         updateContact
+        } from "../controllers/crmController";
 
 // here we create all the routes we need,
 //in order to create a route, we'll create a function call "routes"
@@ -25,9 +29,8 @@ const routes = (app) => {
     .get(getContactsWithID)
     
     //put request
-    .put((req, res) => 
-    res.send('PUT request successfull !!! '))
-    
+    .put(updateContact)
+
     .delete((req, res) => 
     res.send('DELETE request successfull !!! '));
 }
