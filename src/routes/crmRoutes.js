@@ -1,4 +1,4 @@
-import { addNewContact } from "../controllers/crmController";
+import { addNewContact , getContacts} from "../controllers/crmController";
 
 // here we create all the routes we need,
 //in order to create a route, we'll create a function call "routes"
@@ -15,9 +15,7 @@ const routes = (app) => {
         console.log(`Request from : ${req.originalUrl}`)
         console.log(`Request type : ${req.method}`)
         next();
-    }, (req, res, next) =>{
-        res.send('GET request successfull !!! ');
-    })
+    }, getContacts)
 // POST endpoint
     .post(addNewContact);
 
