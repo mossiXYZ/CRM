@@ -23,3 +23,12 @@ export const getContacts = (req, res) => {
         res.send(contact);
     });
 };
+
+export const getContactsWithID = (req, res) => {
+    Contact.findById(req.params.contactId, (err, contact) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(contact);
+    });
+};
